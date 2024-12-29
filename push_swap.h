@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/27 17:32:54 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/29 17:56:12 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct t_stack
 	struct t_stack *next;
 } t_stack;
 
-t_stack *top;
 
 char	**ft_split(char const *s, char c);
 int		t_atoi(const char *str);

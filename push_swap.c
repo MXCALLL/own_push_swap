@@ -6,13 +6,13 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/27 18:01:29 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/29 17:52:55 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int check_error(char *str)
+static int valid_input(char *str)
 {
 	int i = 0;
 	int flag = 0;
@@ -34,13 +34,16 @@ static int check_error(char *str)
 int	main(int argc, char **argv)
 {
 	int i = 1;
-	if (argc > 3)
+	if (argc < 2)
+		return (1);
+	if (argc >= 2)
 	{
+		argv = ft_split(argv[i], ' ');
 		while (argv[i])
 		{
-			if (check_error(argv[i]))
+			if (valid_input(argv[i]))
 			{
-				ft_printf("Error");
+				printf("Error\n");
 			}
 			i++;
 		}
