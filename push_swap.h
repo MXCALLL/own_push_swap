@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 10:06:03 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/30 11:27:26 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 
 #include <stdio.h>
 
-typedef struct t_stack
+typedef struct stack
 {
-	int number;
+	int		number;
+	struct t_stack *prev;
 	struct t_stack *next;
-} t_stack;
+} stack;
 
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);

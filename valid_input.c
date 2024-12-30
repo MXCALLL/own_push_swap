@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:53:17 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 09:53:44 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/30 12:43:20 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int valid_input(char *str)
 	while(str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else if ( str[i] == '-' && str[i + 1] != '-')
+			i++;
+		else if(str[i] == '+' && str[i + 1] != '+')
 			i++;
 		else
 		{
