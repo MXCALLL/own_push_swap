@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 15:12:22 by muidbell         ###   ########.fr       */
+/*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
+/*   Updated: 2024/12/30 15:24:57 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-#include "../ft_printf/ft_printf.h"
-#include <stdlib.h>
-#include <limits.h>
-
-#include <stdio.h>
-
-typedef struct stack
+void	free_split(char **split)
 {
-	int		number;
-	struct t_stack *prev;
-	struct t_stack *next;
-} stack;
+	int		i;
 
-char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
-int		valid_input(char *str);
-void	free_split(char **split);
+	if (!split)
+		return ;
 
-// int  is_Sorted(t_stack* stack);
-
-#endif
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
