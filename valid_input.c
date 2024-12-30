@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Error.c                                            :+:      :+:    :+:   */
+/*   valid_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 15:32:28 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/29 15:29:02 by muidbell         ###   ########.fr       */
+/*   Created: 2024/12/30 09:53:17 by muidbell          #+#    #+#             */
+/*   Updated: 2024/12/30 09:53:44 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *error(char *str)
+int valid_input(char *str)
 {
-	while (*str)
+	int i = 0;
+	int flag = 0;
+	while(str[i])
 	{
-		if ((*str >= '0') && (*str <= '9'))
-			break;
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
 		else
-			return("Error");
-		str++;
+		{
+			flag = 1;
+			break;
+		}
 	}
-	return("\n");
+	if (flag != 0)
+		return (1);
+	return (0);
 }
