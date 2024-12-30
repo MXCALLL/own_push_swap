@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 15:24:57 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/30 21:29:30 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	free_split(char **split)
 
 	if (!split)
 		return ;
-
 	i = 0;
 	while (split[i])
 	{

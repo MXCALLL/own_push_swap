@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 20:52:24 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/30 21:28:44 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,34 @@ void f(void)
 
 int	main(int argc, char **argv)
 {
-	// atexit(f);
-	int i = 0;
-	char **argv_split;
-	if (argc == 1)
-		return (1);
-	if (argc == 2)
-	{
-		argv_split = ft_split(argv[1], ' ');
-		while (argv_split[i])
-		{
-			if (valid_input(argv_split[i]))
-			{
-				ft_printf("Error\n");
-				free_split(argv_split);
-				return (1);
-			}
-			i++;
-		}
-	}
-	else if (argc >= 3)
-	{
-		i = 1;
-		while (argv[i])
-		{
-			if (valid_input(argv[i]))
-			{
-				ft_printf("Error\n");
-				return (1);
-			}
-			i++;
-		}
-	}
-	return (0);
+    // atexit(f);
+    int i;
+    int j;
+    char **argv_split;
+
+    if (argc == 1)
+        return (1);
+
+    if (argc >= 2)
+    {
+        i = 1;
+        while (i < argc)
+        {
+            argv_split = ft_split(argv[i], ' ');
+            j = 0;
+            while (argv_split[j])
+            {
+                if (valid_input(argv_split[j]))
+                {
+                    ft_printf("Error\n");
+                    free_split(argv_split);
+                    return (1);
+                }
+                j++;
+            }
+            free_split(argv_split);
+            i++;
+        }
+    }
+    return (0);
 }
