@@ -6,28 +6,15 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:48:11 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/30 17:23:04 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/31 11:42:21 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int	check_overflow(long result, int sign, int next_digit)
-{
-	if ((result > MAX / 10) || (result == MAX / 10))
-	{
-		if (sign == 1 && (result > MAX / 10 || next_digit > 7))
-			return (-1);
-		if (sign == -1 && (result > MAX / 10 || next_digit > 8))
-			return (0);
-	}
-	return (1);
-}
+#include "push_swap.h"
 
 int	ft_atoi(const char *str)
 {
 	int			sign;
-	int			overflow_check;
 	int			next_digit;
 	long		result;
 
@@ -44,11 +31,10 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		next_digit = *str - '0';
-		overflow_check = check_overflow(result, sign, next_digit);
-		if (overflow_check != 1)
-			return (return);
 		result = result * 10 + next_digit;
 		str++;
 	}
+	if ((result * sign > INT_MAX) && (sign == 1) || (result * sign < INT_MIN) && (sign == -1))
+		ft_printf("Error\n");
 	return ((int)(result * sign));
 }
