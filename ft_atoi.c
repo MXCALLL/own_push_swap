@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:48:11 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/31 11:42:21 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/31 11:50:04 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	if ((result * sign > INT_MAX) && (sign == 1) || (result * sign < INT_MIN) && (sign == -1))
-		ft_printf("Error\n");
+		return (1);
 	return ((int)(result * sign));
 }
