@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2024/12/31 19:06:41 by muidbell         ###   ########.fr       */
+/*   Updated: 2024/12/31 19:08:43 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 			j = 0;
 			while (argv_split[j])
 			{
-				if(argv_split[j] == argv_split[j+1])
+				if (argv_split[j] == argv_split[j + 1])
 				{
 					ft_printf("duplicate");
 					exit(1);
