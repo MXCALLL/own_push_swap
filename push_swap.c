@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/02 12:25:20 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:49:45 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	// atexit(f);
 	int		i;
 	int		j;
+	int		nbr_index;
 	int		countnbr;
 	char	**argv_split;
 	int		*nbr;
@@ -52,7 +53,7 @@ int	main(int argc, char **argv)
 		if (!nbr)
 			print_error();
 		i = 1;
-		int nbr_index = 0;
+		nbr_index = 0;
         while (i < argc)
         {
             argv_split = ft_split(argv[i], ' ');
