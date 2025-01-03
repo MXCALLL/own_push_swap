@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 15:57:14 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:24:12 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,55 +68,55 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc  < 2)
 		return (1);
-	if (argc >= 2)
+	if (argc <= 100)
 	{
-		i = 1;
-		countnbr = 0;
+			i = 1;
+			countnbr = 0;
 
-		while (i < argc)
-		{
-			argv_split = ft_split(argv[i], ' ');
-			if (argv_split == NULL || argv_split[0] == NULL)
+			while (i < argc)
+			{
+				argv_split = ft_split(argv[i], ' ');
+				if (argv_split == NULL || argv_split[0] == NULL)
+					display_error();
+				j = 0;
+				while (argv_split[j])
+					j++;
+				countnbr += j;
+				free_split(argv_split);
+				i++;
+			}
+
+			nbr = malloc(sizeof(int) * countnbr);
+			if (!nbr)
 				display_error();
-			j = 0;
-			while (argv_split[j])
-				j++;
-			countnbr += j;
-			free_split(argv_split);
-			i++;
-		}
 
-		nbr = malloc(sizeof(int) * countnbr);
-		if (!nbr)
-			display_error();
-		i = 1;
-		nbr_index = 0;
+			i = 1;
+			nbr_index = 0;
+        	while (i < argc)
+        	{
+        	    argv_split = ft_split(argv[i], ' ');
+        	    if (argv_split == NULL || argv_split[0] == NULL)
+        	        display_error();
+        	    j = 0;
+        	    while (argv_split[j])
+        	    {
+        	        nbr[nbr_index++] = ft_atoi(argv_split[j]);
+        	        j++;
+        	    }
+        	    if (check_duplicates(nbr, nbr_index))
+        	    {
+        	        display_error();
+        	        free(nbr);
+        	        free_split(argv_split);
+        	    }
+        	    free_split(argv_split);
+				i++;
+			}
 
-        while (i < argc)
-        {
-            argv_split = ft_split(argv[i], ' ');
-            if (argv_split == NULL || argv_split[0] == NULL)
-                display_error();
-            j = 0;
-            while (argv_split[j])
-            {
-                nbr[nbr_index++] = ft_atoi(argv_split[j]);
-                j++;
-            }
-            if (check_duplicates(nbr, nbr_index))
-            {
-                display_error();
-                free(nbr);
-                free_split(argv_split);
-            }
-            free_split(argv_split);
-            i++;
-        }
-
-		stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
-		if(is_sorted(&stack_a))
-			display_error();
-        free(nbr);
+			stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
+			if(is_sorted(&stack_a))
+				display_error();
+		free(nbr);
     }
 	return (0);
 }
