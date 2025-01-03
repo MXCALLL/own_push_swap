@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 21:19:11 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:26:18 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,8 @@ int	main(int argc, char **argv)
         	    j = 0;
         	    while (argv_split[j])
         	    {
-        	        nbr[nbr_index] = ft_atoi(argv_split[j]);
+        	        nbr[nbr_index++] = ft_atoi(argv_split[j]);
         	        j++;
-					nbr_index++;
         	    }
         	    if (check_duplicates(nbr, nbr_index))
         	    {
