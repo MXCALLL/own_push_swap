@@ -6,13 +6,13 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/02 12:24:07 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:28:46 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+void	display_error(void)
 {
 	write(1,"Error\n",7);
 	exit(1);

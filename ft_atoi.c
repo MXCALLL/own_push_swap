@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:48:11 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/02 10:48:50 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:29:13 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str)
     long		result;
 
     if (!is_valid_input(str))
-        print_error();
+        display_error();
     sign = 1;
     result = 0;
     while ((*str == ' ') || (*str >= 9 && *str <= 13))
@@ -67,7 +67,7 @@ int	ft_atoi(const char *str)
         next_digit = *str - '0';
         overflow_check = check_overflow(result, sign, next_digit);
         if (overflow_check != 1)
-            print_error();
+            display_error();
         result = result * 10 + next_digit;
         str++;
     }
