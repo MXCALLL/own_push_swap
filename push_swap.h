@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 12:51:28 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:20:01 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	display_error(void);
 int		ft_atoi(const char *str);
 int		check_duplicates(int *numbers, int size);
 void	free_split(char **split);
-s_stack	*insert_to_stack(s_stack **head, int *number, int size);
-
+s_stack	*insert_to_fstack(s_stack **head, int **number, int size);
 int		is_sorted(s_stack **head);
 
 #endif

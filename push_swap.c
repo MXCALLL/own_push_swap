@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 12:57:11 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:50:57 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,28 @@ void f(void)
 	system("leaks a.out");
 }
 
-s_stack	*insert_to_stack(s_stack **head, int *number, int size)
+s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
 {
+	int		i;
 	s_stack *new_element;
 
-	new_element = malloc(sizeof(s_stack));
-	if(!new_element)
-		display_error();
-
+	i = 0;
+	while(i < size)
+	{
+		new_element = malloc(sizeof(s_stack));
+		if(!new_element)
+			display_error();
+		new_element->content = (*number)[i];
+		new_element->prev = NULL;
+		new_element->next = *head;
+		if (*head != NULL)
+			(*head)->prev = new_element;
+		*head = new_element;
+		i++;
+	}
+	return (new_element);
 }
+
 int	is_sorted(s_stack **head)
 {
 	s_stack *current;
@@ -33,10 +46,10 @@ int	is_sorted(s_stack **head)
 	while(current->next != NULL)
 	{
 		if (current->content < current->next->content)
-			return (1);
+			return (0);
 		current = current->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -96,7 +109,9 @@ int	main(int argc, char **argv)
             free_split(argv_split);
             i++;
         }
-		insert_to_stack(&stack_a, &nbr,nbr_index);
+		stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
+		if(is_sorted(&stack_a))
+			display_error();
         free(nbr);
     }
 	return (0);
