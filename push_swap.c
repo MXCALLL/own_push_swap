@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 18:24:12 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:19:11 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc  < 2)
+	if (argc < 2)
 		return (1);
 	if (argc <= 100)
 	{
@@ -100,8 +100,9 @@ int	main(int argc, char **argv)
         	    j = 0;
         	    while (argv_split[j])
         	    {
-        	        nbr[nbr_index++] = ft_atoi(argv_split[j]);
+        	        nbr[nbr_index] = ft_atoi(argv_split[j]);
         	        j++;
+					nbr_index++;
         	    }
         	    if (check_duplicates(nbr, nbr_index))
         	    {
@@ -115,7 +116,7 @@ int	main(int argc, char **argv)
 
 			stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
 			if(is_sorted(&stack_a))
-				display_error();
+				return (1);
 		free(nbr);
     }
 	return (0);
