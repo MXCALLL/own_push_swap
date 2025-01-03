@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 15:50:57 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:57:14 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 	{
 		i = 1;
 		countnbr = 0;
+
 		while (i < argc)
 		{
 			argv_split = ft_split(argv[i], ' ');
@@ -84,11 +85,13 @@ int	main(int argc, char **argv)
 			free_split(argv_split);
 			i++;
 		}
+
 		nbr = malloc(sizeof(int) * countnbr);
 		if (!nbr)
 			display_error();
 		i = 1;
 		nbr_index = 0;
+
         while (i < argc)
         {
             argv_split = ft_split(argv[i], ' ');
@@ -109,6 +112,7 @@ int	main(int argc, char **argv)
             free_split(argv_split);
             i++;
         }
+
 		stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
 		if(is_sorted(&stack_a))
 			display_error();
