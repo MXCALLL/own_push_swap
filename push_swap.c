@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 21:26:18 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:23:01 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void f(void)
 {
-	system("leaks a.out");
+	system("leaks push_swap");
 }
 
 s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
@@ -54,7 +54,7 @@ int	is_sorted(s_stack **head)
 
 int	main(int argc, char **argv)
 {
-	// atexit(f);
+	atexit(f);
 	int		i;
 	int		j;
 	int		nbr_index;
@@ -68,55 +68,51 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (1);
-	if (argc <= 100)
-	{
-			i = 1;
-			countnbr = 0;
 
-			while (i < argc)
-			{
-				argv_split = ft_split(argv[i], ' ');
-				if (argv_split == NULL || argv_split[0] == NULL)
-					display_error();
-				j = 0;
-				while (argv_split[j])
-					j++;
-				countnbr += j;
-				free_split(argv_split);
-				i++;
-			}
-
-			nbr = malloc(sizeof(int) * countnbr);
-			if (!nbr)
+		i = 1;
+		countnbr = 0;
+		while (i < argc)
+		{
+			argv_split = ft_split(argv[i], ' ');
+			if (argv_split == NULL || argv_split[0] == NULL)
 				display_error();
+			j = 0;
+			while (argv_split[j])
+				j++;
+			countnbr += j;
+			free_split(argv_split);
+			i++;
+		}
 
-			i = 1;
-			nbr_index = 0;
-        	while (i < argc)
-        	{
-        	    argv_split = ft_split(argv[i], ' ');
-        	    if (argv_split == NULL || argv_split[0] == NULL)
-        	        display_error();
-        	    j = 0;
-        	    while (argv_split[j])
-        	    {
-        	        nbr[nbr_index++] = ft_atoi(argv_split[j]);
-        	        j++;
-        	    }
-        	    if (check_duplicates(nbr, nbr_index))
-        	    {
-        	        display_error();
-        	        free(nbr);
-        	        free_split(argv_split);
-        	    }
-        	    free_split(argv_split);
-				i++;
-			}
+		nbr = malloc(sizeof(int) * countnbr);
+		if (!nbr)
+			display_error();
 
-			stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
-			if(is_sorted(&stack_a))
-				return (1);
+		i = 1;
+		nbr_index = 0;
+    	while (i < argc)
+    	{
+    	    argv_split = ft_split(argv[i], ' ');
+    	    if (argv_split == NULL || argv_split[0] == NULL)
+    	        display_error();
+    	    j = 0;
+    	    while (argv_split[j])
+    	    {
+    	        nbr[nbr_index++] = ft_atoi(argv_split[j]);
+    	        j++;
+    	    }
+    	    if (check_duplicates(nbr, nbr_index))
+    	    {
+    	        display_error();
+    	        free(nbr);
+    	        free_split(argv_split);
+    	    }
+    	    free_split(argv_split);
+			i++;
+		}
+		stack_a = insert_to_fstack(&stack_a, &nbr,nbr_index);
+		if(is_sorted(&stack_a))
+			return (1);
 		free(nbr);
-    }
 	return (0);
 }
