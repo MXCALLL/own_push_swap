@@ -6,16 +6,11 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/04 16:23:01 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:39:58 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void f(void)
-{
-	system("leaks push_swap");
-}
 
 s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
 {
@@ -54,7 +49,6 @@ int	is_sorted(s_stack **head)
 
 int	main(int argc, char **argv)
 {
-	atexit(f);
 	int		i;
 	int		j;
 	int		nbr_index;
@@ -103,9 +97,8 @@ int	main(int argc, char **argv)
     	    }
     	    if (check_duplicates(nbr, nbr_index))
     	    {
-    	        display_error();
     	        free(nbr);
-    	        free_split(argv_split);
+    	        display_error();
     	    }
     	    free_split(argv_split);
 			i++;
