@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:53:41 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/05 20:27:54 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:43:39 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	push_a(s_stack **stack_a, s_stack **stack_b)
 		(*stack_a)->prev = temp_b;
 	temp_b->prev = NULL;
 	*stack_a = temp_b;
+	write(1,"pa\n",3);
 }
 
 void	push_b(s_stack **stack_a, s_stack **stack_b)
@@ -44,4 +45,5 @@ void	push_b(s_stack **stack_a, s_stack **stack_b)
 		(*stack_b)->prev = temp_a;
 	temp_a->prev = NULL;
 	*stack_b = temp_a;
+	write(1,"pb\n",3);
 }

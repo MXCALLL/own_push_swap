@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/05 20:30:25 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:45:13 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@ int		is_sorted(s_stack **head);
 
 void	push_a(s_stack **stack_a, s_stack **stack_b);
 void	push_b(s_stack **stack_a, s_stack **stack_b);
+
+void	swap_a(s_stack **stack_a);
+void	swap_b(s_stack **stack_b);
+void	swap_both(s_stack **stack_a, s_stack **stack_b);
+
+void	rotate_a(s_stack **stack_a);
+void	rotate_b(s_stack **stack_b);
+void	rotate_both(s_stack **stack_a, s_stack **stack_b);
+
+void	reverse_ra(s_stack **stack_a);
+void	reverse_rb(s_stack **stack_b);
+void	reverse_rboth(s_stack **stack_a,s_stack **stack_b);
 
 #endif

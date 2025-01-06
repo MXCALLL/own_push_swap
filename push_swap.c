@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/05 18:39:58 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:36:27 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
 {
 	int		i;
+	int		index;
 	s_stack *new_element;
 
+	index = size;
 	i = 0;
 	while(i < size)
 	{
@@ -26,9 +28,11 @@ s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
 		new_element->content = (*number)[i];
 		new_element->prev = NULL;
 		new_element->next = *head;
+		new_element->index = --index;
 		if (*head != NULL)
 			(*head)->prev = new_element;
 		*head = new_element;
+		// printf("%d:%d\n",new_element->index,new_element->content); // index view
 		i++;
 	}
 	return (new_element);
@@ -47,6 +51,17 @@ int	is_sorted(s_stack **head)
 	return (1);
 }
 
+void	print_stack(s_stack *head)
+{
+    s_stack	*tmp = head;
+    while (tmp)
+    {
+        printf("%d ", tmp->content);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -60,7 +75,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc < 2)
+	if (argc == 1)
 		return (1);
 
 		i = 1;
@@ -107,5 +122,6 @@ int	main(int argc, char **argv)
 		if(is_sorted(&stack_a))
 			return (1);
 		free(nbr);
+		// print_stack(stack_a);
 	return (0);
 }
