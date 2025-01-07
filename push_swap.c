@@ -6,23 +6,23 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/06 17:36:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:07:51 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
+t_stack	*insert_to_fstack(t_stack **head, int **number, int size)
 {
 	int		i;
 	int		index;
-	s_stack *new_element;
+	t_stack *new_element;
 
 	index = size;
 	i = 0;
 	while(i < size)
 	{
-		new_element = malloc(sizeof(s_stack));
+		new_element = malloc(sizeof(t_stack));
 		if(!new_element)
 			display_error();
 		new_element->content = (*number)[i];
@@ -38,9 +38,9 @@ s_stack	*insert_to_fstack(s_stack **head, int **number, int size)
 	return (new_element);
 }
 
-int	is_sorted(s_stack **head)
+int	is_sorted(t_stack **head)
 {
-	s_stack *current;
+	t_stack *current;
 	current = *head;
 	while(current->next != NULL)
 	{
@@ -51,9 +51,9 @@ int	is_sorted(s_stack **head)
 	return (1);
 }
 
-void	print_stack(s_stack *head)
+void	print_stack(t_stack *head)
 {
-    s_stack	*tmp = head;
+    t_stack	*tmp = head;
     while (tmp)
     {
         printf("%d ", tmp->content);
@@ -70,8 +70,8 @@ int	main(int argc, char **argv)
 	int		countnbr;
 	char	**argv_split;
 	int		*nbr;
-	s_stack *stack_a;
-	s_stack *stack_b;
+	t_stack *stack_a;
+	t_stack *stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;

@@ -6,15 +6,15 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:53:41 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/06 19:43:39 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:06:38 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(s_stack **stack_a, s_stack **stack_b)
+void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	s_stack *temp_b;
+	t_stack *temp_b;
 
 	if(*stack_b == NULL)
 		return;
@@ -30,9 +30,9 @@ void	push_a(s_stack **stack_a, s_stack **stack_b)
 	write(1,"pa\n",3);
 }
 
-void	push_b(s_stack **stack_a, s_stack **stack_b)
+void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
-	s_stack *temp_a;
+	t_stack *temp_a;
 
 	if(*stack_a == NULL)
 		return;

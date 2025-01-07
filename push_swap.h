@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/06 19:45:13 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:05:51 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,29 @@ typedef struct stacks
 	int				index;
 	struct stacks	*prev;
 	struct stacks	*next;
-}	s_stack;
+}	t_stack;
 
 char	**ft_split(char const *s, char c);
 void	display_error(void);
 int		ft_atoi(const char *str);
 int		check_duplicates(int *numbers, int size);
 void	free_split(char **split);
-s_stack	*insert_to_fstack(s_stack **head, int **number, int size);
-int		is_sorted(s_stack **head);
+t_stack	*insert_to_fstack(t_stack **head, int **number, int size);
+int		it_stack_sorted(t_stack **head);
 
-void	push_a(s_stack **stack_a, s_stack **stack_b);
-void	push_b(s_stack **stack_a, s_stack **stack_b);
+void	push_a(t_stack **stack_a, t_stack **stack_b);
+void	push_b(t_stack **stack_a, t_stack **stack_b);
 
-void	swap_a(s_stack **stack_a);
-void	swap_b(s_stack **stack_b);
-void	swap_both(s_stack **stack_a, s_stack **stack_b);
+void	swap_a(t_stack **stack_a);
+void	swap_b(t_stack **stack_b);
+void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
-void	rotate_a(s_stack **stack_a);
-void	rotate_b(s_stack **stack_b);
-void	rotate_both(s_stack **stack_a, s_stack **stack_b);
+void	rotate_a(t_stack **stack_a);
+void	rotate_b(t_stack **stack_b);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
-void	reverse_ra(s_stack **stack_a);
-void	reverse_rb(s_stack **stack_b);
-void	reverse_rboth(s_stack **stack_a,s_stack **stack_b);
+void	reverse_ra(t_stack **stack_a);
+void	reverse_rb(t_stack **stack_b);
+void	reverse_rboth(t_stack **stack_a, t_stack **stack_b);
 
 #endif
