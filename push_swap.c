@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/07 20:51:11 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:04:44 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,10 @@ int	main(int argc, char **argv)
 		swap_a(&stack_a);
 	else if (argc == 4)
 		sort_three(&stack_a);
-	// else if (argc <= 6)
-	// 	sort_five(&stack_a, &stack_b);
+	else if (argc <= 6)
+		sort_ffive(&stack_a, &stack_b);
 
 	print_stack(stack_a);
+	// print_stack(stack_b);
 	return (0);
 }
