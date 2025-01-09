@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/08 23:04:44 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:56:28 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	print_stack(t_stack *head)
     t_stack	*tmp = head;
     while (tmp)
     {
-        printf("%d ", tmp->content);
+        printf("%d:%d ", tmp->index,tmp->content);
         tmp = tmp->next;
     }
     printf("\n");
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc <= 2)
+	if (argc < 2)
 		return (1);
 
 	i = 1;
@@ -126,12 +126,16 @@ int	main(int argc, char **argv)
 		return (free(nbr),1);
 	free(nbr);
 
-	if (argc == 3)
+	if (nbr_index == 2)
 		swap_a(&stack_a);
-	else if (argc == 4)
+	else if (nbr_index == 3)
 		sort_three(&stack_a);
-	else if (argc <= 6)
+	else if (nbr_index <= 5)
 		sort_ffive(&stack_a, &stack_b);
+	// else if (argc > 5)
+	// 	sort_large_algo(&stack_a, &stack_b);
+	else
+		printf("Nothing\n");
 
 	print_stack(stack_a);
 	// print_stack(stack_b);

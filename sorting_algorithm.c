@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/08 23:27:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:55:51 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_stack_size(t_stack *stack)
 		size++;
 		stack = stack->next;
 	}
-	return size;
+	return (size);
 }
 
 static int	find_min_position(t_stack *stack)
@@ -40,7 +40,7 @@ static int	find_min_position(t_stack *stack)
 		temp = temp->next;
 		i++;
 	}
-	return pos;
+	return (pos);
 }
 
 static void	rotate_to_top(t_stack **stack, int pos, int size)
@@ -90,8 +90,9 @@ void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 	int size;
 	int position;
 
-	while ((size = get_stack_size(*stack_a)) > 3)
+	while (get_stack_size(*stack_a) > 3)
 	{
+		size = get_stack_size(*stack_a);
 		position = find_min_position(*stack_a);
 		rotate_to_top(stack_a, position, size);
 		push_b(stack_a, stack_b);
