@@ -6,52 +6,40 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/09 11:56:28 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:30:23 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*insert_to_stack(t_stack **head, int **number, int size)
+int	get_stack_size(t_stack *stack)
+{
+	int size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+int check_duplicates(int *numbers, int size)
 {
 	int		i;
-	t_stack *new_element;
-	t_stack *current;
-
-	*head = NULL;
-	current  = NULL;
+	int		j;
 	i = 0;
 	while(i < size)
 	{
-		new_element = malloc(sizeof(t_stack));
-		if(!new_element)
-			display_error();
-		new_element->content = (*number)[i];
-		new_element->index = i;
-		new_element->next = NULL;
-		new_element->prev = current;
-		if (*head == NULL)
-			*head = new_element;
-		else
-			current->next = new_element;
-		current = new_element;
-		// printf("%d:%d\n",new_element->index,new_element->content); // index view
+		j = i + 1;
+		while(j < size)
+		{
+			if(numbers[i] == numbers[j])
+				return (1);
+			j++;
+		}
 		i++;
 	}
-	return (*head);
-}
-
-int	is_sorted(t_stack **head)
-{
-	t_stack *current;
-	current = *head;
-	while(current->next != NULL)
-	{
-		if (current->content > current->next->content)
-			return(0);
-		current = current->next;
-	}
-	return (1);
+	return (0);
 }
 
 void	print_stack(t_stack *head)

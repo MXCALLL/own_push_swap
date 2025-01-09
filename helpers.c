@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/03 12:28:46 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:30:13 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,47 @@ void	display_error(void)
 	write(1,"Error\n",7);
 	exit(1);
 }
-int check_duplicates(int *numbers, int size)
+
+int	is_sorted(t_stack **head)
+{
+	t_stack *current;
+	current = *head;
+	while(current->next != NULL)
+	{
+		if (current->content > current->next->content)
+			return(0);
+		current = current->next;
+	}
+	return (1);
+}
+
+t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 {
 	int		i;
-	int		j;
+	t_stack *new_element;
+	t_stack *current;
+
+	*head = NULL;
+	current  = NULL;
 	i = 0;
 	while(i < size)
 	{
-		j = i + 1;
-		while(j < size)
-		{
-			if(numbers[i] == numbers[j])
-				return (1);
-			j++;
-		}
+		new_element = malloc(sizeof(t_stack));
+		if(!new_element)
+			display_error();
+		new_element->content = (*number)[i];
+		new_element->index = i;
+		new_element->next = NULL;
+		new_element->prev = current;
+		if (*head == NULL)
+			*head = new_element;
+		else
+			current->next = new_element;
+		current = new_element;
+		// printf("%d:%d\n",new_element->index,new_element->content); // index view
 		i++;
 	}
-	return (0);
+	return (*head);
 }
 
 void	free_split(char **split)
@@ -49,4 +73,24 @@ void	free_split(char **split)
 		i++;
 	}
 	free(split);
+}
+
+int	find_min_position(t_stack *stack)
+{
+	int min_val = INT_MAX;
+	int pos = 0;
+	int i = 0;
+	t_stack *temp = stack;
+
+	while (temp)
+	{
+		if (temp->content < min_val)
+		{
+			min_val = temp->content;
+			pos = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	return (pos);
 }
