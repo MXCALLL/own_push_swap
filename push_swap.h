@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/09 12:30:44 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:00:23 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
+# include <stdbool.h>
 # include <limits.h>
 
 # include <stdio.h> // to remove
 
-typedef struct stacks
+typedef struct s_stack
 {
 	int				content;
 	int				index;
-	struct stacks	*prev;
-	struct stacks	*next;
+	int				push_cost; //How many commands in total
+	bool			above_median; //Used to calculate "push_cost"
+	bool			cheapset; //The node that is the cheapest to do commands
+	struct s_stack	*target_node; //The target node of a node in the opposite stack
+	struct s_stack	*prev;
+	struct s_stack	*next;
 }	t_stack;
 
 // *** Helpers function ***
@@ -57,6 +62,6 @@ void	reverse_rboth(t_stack **stack_a, t_stack **stack_b);
 // *** Algorithm Sorting ***
 void	sort_three(t_stack **stack_a);
 void	sort_ffive(t_stack **stack_a, t_stack **stack_b);
-void	sort_large_algo(t_stack **stack_a, t_stack **stack_b);
+void	sort_hundred(t_stack **stack_a, t_stack **stack_b);
 
 #endif

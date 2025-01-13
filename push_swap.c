@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/09 12:30:23 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:11:48 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	main(int argc, char **argv)
 	else if (nbr_index <= 5)
 		sort_ffive(&stack_a, &stack_b);
 	// else if (argc > 5)
-	// 	sort_large_algo(&stack_a, &stack_b);
+	// 	sort_hundred(&stack_a, &stack_b);
 	else
 		printf("Nothing\n");
 

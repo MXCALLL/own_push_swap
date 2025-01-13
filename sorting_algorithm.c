@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/09 12:31:03 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:07:51 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 		push_a(stack_a, stack_b);
 }
-// void	sort_large_algo(t_stack **stack_a, t_stack **stack_b)
+// void	sort_hundred(t_stack **stack_a, t_stack **stack_b)
 // {
 
 // }
