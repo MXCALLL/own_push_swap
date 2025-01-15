@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 10:50:07 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:22:44 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,41 @@ int	get_stack_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (size);
+}
+
+void	print_stack(t_stack *head)
+{
+    t_stack	*tmp = head;
+    while (tmp)
+    {
+        printf("%d:%d\n", tmp->index,tmp->content);
+        tmp = tmp->next;
+    }
+//    printf("\n");
+}
+void    indexing(t_stack *stack)
+{
+    t_stack *current;
+    t_stack *min_node;
+    int     i;
+    int     size;
+
+    size = get_stack_size(stack);
+    i = 0;
+    while (i < size)
+    {
+        current = stack;
+        min_node = NULL; // first past (prevent seg fault)
+        while (current)
+        {
+            if (current->index == -1)
+                if(!min_node || current->content < min_node->content)
+                    min_node = current;
+            current = current->next;
+        }
+        if (min_node)
+            min_node->index = i++;
+    }
 }
 
 int check_duplicates(int *numbers, int size)
@@ -40,17 +75,6 @@ int check_duplicates(int *numbers, int size)
 		i++;
 	}
 	return (0);
-}
-
-void	print_stack(t_stack *head)
-{
-    t_stack	*tmp = head;
-    while (tmp)
-    {
-        printf("%d:%d ", tmp->index,tmp->content);
-        tmp = tmp->next;
-    }
-    printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -120,12 +144,13 @@ int	main(int argc, char **argv)
 		sort_three(&stack_a);
 	else if (nbr_index <= 5)
 		sort_ffive(&stack_a, &stack_b);
-	// else if (argc > 5)
-	// 	sort_hundred(&stack_a, &stack_b);
+	else if (argc > 5)
+		large_sort(&stack_a, &stack_b);
 	else
-		printf("Nothing\n");
+		indexing(stack_a);
+		// printf("Nothing\n");
 
-	// print_stack(stack_a);
+	print_stack(stack_a);
 	// print_stack(stack_b);
 	return (0);
 }

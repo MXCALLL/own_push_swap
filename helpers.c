@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 11:21:50 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:59:30 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 		if(!new_element)
 			display_error();
 		new_element->content = (*number)[i];
-		new_element->index = i;
+		new_element->index = -1; // flag detect not indexed (for large sort)
 		new_element->next = NULL;
 		if (*head == NULL)
 			*head = new_element;
@@ -82,7 +82,7 @@ int	find_min_position(t_stack *stack)
 	t_stack	*temp;
 
 	temp = stack;
-	min_val = INT_MAX;
+	min_val = INT_MAX; // if it's INT_MIN it would never reach min value cause is the smallest value possible
 	pos = 0;
 	i = 0;
 	while (temp)

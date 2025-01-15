@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 11:22:26 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:52:35 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		is_sorted(t_stack **head);
 int		find_min_position(t_stack *stack);
 void	rotate_to_top(t_stack **stack, int pos, int size);
 int		get_stack_size(t_stack *stack);
+void	indexing(t_stack *stack);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);
@@ -58,6 +59,6 @@ void	reverse_rboth(t_stack **stack_a, t_stack **stack_b);
 // *** Algorithm Sorting ***
 void	sort_three(t_stack **stack_a);
 void	sort_ffive(t_stack **stack_a, t_stack **stack_b);
-void	sort_hundred(t_stack **stack_a, t_stack **stack_b);
+void	large_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif
