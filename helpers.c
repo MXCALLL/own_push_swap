@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/09 12:30:13 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:21:50 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 		new_element->content = (*number)[i];
 		new_element->index = i;
 		new_element->next = NULL;
-		new_element->prev = current;
 		if (*head == NULL)
 			*head = new_element;
 		else
@@ -77,11 +76,15 @@ void	free_split(char **split)
 
 int	find_min_position(t_stack *stack)
 {
-	int min_val = INT_MAX;
-	int pos = 0;
-	int i = 0;
-	t_stack *temp = stack;
+	int		min_val;
+	int		pos;
+	int		i;
+	t_stack	*temp;
 
+	temp = stack;
+	min_val = INT_MAX;
+	pos = 0;
+	i = 0;
 	while (temp)
 	{
 		if (temp->content < min_val)

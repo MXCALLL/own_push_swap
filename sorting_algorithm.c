@@ -6,13 +6,13 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/13 11:07:51 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:12:19 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate_to_top(t_stack **stack, int pos, int size)
+void	rotate_to_top(t_stack **stack, int pos, int size)
 {
 	if (pos <= size / 2)
 	{

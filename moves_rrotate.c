@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:47:58 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/07 10:07:12 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:26:49 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ static void reverse_rotate(t_stack **stack)
 		slast = last;
 		last = last->next;
 	}
-
 	slast->next = NULL;
 	last->next = *stack;
-	last->prev = NULL;
-	(*stack)->prev = last;
 	*stack = last;
 }
 

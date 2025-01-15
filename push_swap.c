@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/13 11:11:48 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:50:07 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	main(int argc, char **argv)
 	else
 		printf("Nothing\n");
 
-	print_stack(stack_a);
+	// print_stack(stack_a);
 	// print_stack(stack_b);
 	return (0);
 }
