@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 16:52:35 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:49:05 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	free_split(char **split);
 t_stack	*insert_to_stack(t_stack **head, int **number, int size);
 int		is_sorted(t_stack **head);
 int		find_min_position(t_stack *stack);
+int		find_max_position(t_stack *stack);
 void	rotate_to_top(t_stack **stack, int pos, int size);
 int		get_stack_size(t_stack *stack);
 void	indexing(t_stack *stack);
+int		chunk_size(int stack_size);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);

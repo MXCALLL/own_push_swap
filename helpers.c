@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 12:59:30 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:01:25 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	find_min_position(t_stack *stack)
 	int		i;
 	t_stack	*temp;
 
+	if (!stack)
+    	return (-1);
 	temp = stack;
 	min_val = INT_MAX; // if it's INT_MIN it would never reach min value cause is the smallest value possible
 	pos = 0;
@@ -90,6 +92,31 @@ int	find_min_position(t_stack *stack)
 		if (temp->content < min_val)
 		{
 			min_val = temp->content;
+			pos = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	return (pos);
+}
+int	find_max_position(t_stack *stack)
+{
+	int		max_val;
+	int		pos;
+	int		i;
+	t_stack	*temp;
+
+	if (!stack)
+    	return (-1);
+	temp = stack;
+	max_val = INT_MIN;
+	pos = 0;
+	i = 0;
+	while (temp)
+	{
+		if (temp->index > max_val)
+		{
+			max_val = temp->index;
 			pos = i;
 		}
 		temp = temp->next;
