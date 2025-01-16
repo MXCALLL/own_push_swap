@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/16 17:27:08 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:17:06 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,49 +70,52 @@ void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 		push_a(stack_a, stack_b);
 }
-int		chunk_size(int stack_size)
+int    chunk_size(int size)
 {
-	if (stack_size > 100)
-		return (33);
-	else
-		return (15);
+    if (size <= 100)
+        return (size / 5);  // 20 numbers per chunk for 100
+    return (size / 11);     // ~45 numbers per chunk for 500
 }
 
 void    large_sort(t_stack **stack_a, t_stack **stack_b)
 {
     int     i;
-    int     range;
     int     size;
+    int     range;
 
-    i = 0;
     size = get_stack_size(*stack_a);
     range = chunk_size(size);
+    i = 0;
 
     indexing(*stack_a);
-    while(get_stack_size(*stack_a))
+    while (*stack_a)
     {
-        if((*stack_a)->index <= i)
-        {
-            push_b(stack_a, stack_b);
-            i++;
-        }
-        else if((*stack_a)->index <= (range + i))
+        if ((*stack_a)->index <= i)
         {
             push_b(stack_a, stack_b);
             rotate_b(stack_b);
             i++;
         }
+        else if ((*stack_a)->index <= (range + i))
+        {
+            push_b(stack_a, stack_b);
+            i++;
+        }
         else
-            reverse_ra(stack_a);
+        {
+            if (get_stack_size(*stack_a) > 2)
+                rotate_a(stack_a);
+            else
+                reverse_ra(stack_a);
+        }
     }
 
-    // Modified pushing back logic
-    while(*stack_b)
+	// pushing back
+    while (*stack_b)
     {
         int max = find_max_position(*stack_b);
         int size_b = get_stack_size(*stack_b);
 
-        // Optimize rotation direction
         if (max <= size_b / 2)
         {
             while (max-- > 0)
@@ -126,5 +129,4 @@ void    large_sort(t_stack **stack_a, t_stack **stack_b)
         }
         push_a(stack_a, stack_b);
     }
-
 }
