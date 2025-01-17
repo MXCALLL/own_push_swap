@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/16 18:04:36 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:33:27 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	print_stack(t_stack *head)
         printf("%d:%d\n", tmp->index,tmp->content);
         tmp = tmp->next;
     }
-//    printf("\n");
 }
+
 void    indexing(t_stack *stack)
 {
     t_stack *current;
@@ -148,7 +148,7 @@ int	main(int argc, char **argv)
 		large_sort(&stack_a, &stack_b);
 	else
 		printf("Nothing\n");
-		// get_stack_size(stack_a);
+	// get_stack_size(stack_a);
 	// printf("stack A\n");
 	// print_stack(stack_a);
 

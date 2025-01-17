@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/16 18:17:06 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:04:27 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 		push_a(stack_a, stack_b);
 }
+
 int    chunk_size(int size)
 {
     if (size <= 100)
@@ -113,18 +114,18 @@ void    large_sort(t_stack **stack_a, t_stack **stack_b)
 	// pushing back
     while (*stack_b)
     {
-        int max = find_max_position(*stack_b);
+        int position = find_max_position(*stack_b);
         int size_b = get_stack_size(*stack_b);
 
-        if (max <= size_b / 2)
+        if (position <= size_b / 2)
         {
-            while (max-- > 0)
+            while (position-- > 0)
                 rotate_b(stack_b);
         }
         else
         {
-            max = size_b - max;
-            while (max-- > 0)
+            position = size_b - position;
+            while (position-- > 0)
                 reverse_rb(stack_b);
         }
         push_a(stack_a, stack_b);
