@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 16:02:52 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 22:43:58 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,13 @@ int check_duplicates(int *numbers, int size)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+static int countnbr(int argc, char **argv)
 {
+
 	int		i;
 	int		j;
-	int		nbr_index;
 	int		countnbr;
-	char	**argv_split;
-	int		*nbr;
-	t_stack *stack_a;
-	t_stack *stack_b;
-
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-		return (1);
+	char		**argv_split;
 
 	i = 1;
 	countnbr = 0;
@@ -107,13 +99,19 @@ int	main(int argc, char **argv)
 		free_split(argv_split);
 		i++;
 	}
+	return (countnbr);
+}
 
-	nbr = malloc(sizeof(int) * countnbr);
-	if (!nbr)
-		display_error();
+t_args	process_input(int argc, char **argv)
+{
+    t_args result;
+    char **argv_split;
+    int i;
+    int j;
 
-	i = 1;
-	nbr_index = 0;
+    i = 1;
+    result.count = 0;
+    result.numbers = malloc(sizeof(int) * countnbr(argc, argv));
     while (i < argc)
     {
         argv_split = ft_split(argv[i], ' ');
@@ -121,39 +119,46 @@ int	main(int argc, char **argv)
             display_error();
         j = 0;
         while (argv_split[j])
+            result.numbers[result.count++] = ft_atoi(argv_split[j++]);
+        if (check_duplicates(result.numbers, result.count))
         {
-            nbr[nbr_index++] = ft_atoi(argv_split[j]);
-            j++;
+            free(result.numbers);
+            display_error();
         }
-        if (check_duplicates(nbr, nbr_index))
-        {
-            free(nbr);
-	        display_error();
-    	}
-    	free_split(argv_split);
-		i++;
-	}
-	stack_a = insert_to_stack(&stack_a, &nbr,nbr_index);
-	if(is_sorted(&stack_a))
-		return (free(nbr),1);
-	free(nbr);
+        free_split(argv_split);
+        i++;
+    }
+    return (result);
+}
 
-	if (nbr_index == 2)
+int	main(int argc, char **argv)
+{
+	t_stack *stack_a;
+	t_stack *stack_b;
+	t_args	args;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (1);
+	args = process_input(argc,argv);
+	stack_a = insert_to_stack(&stack_a, &args.numbers, args.count);
+	if (is_sorted(&stack_a))
+		return (1);
+	if (args.count == 2)
 		swap_a(&stack_a);
-	else if (nbr_index == 3)
+	else if (args.count == 3)
 		sort_three(&stack_a);
-	else if (nbr_index <= 5)
+	else if (args.count <= 5)
 		sort_ffive(&stack_a, &stack_b);
-	else if (nbr_index > 5)
+	else if (args.count > 5)
 		large_sort(&stack_a, &stack_b);
 
+	return (0);
+}
 
-	// get_stack_size(stack_a);
 	// printf("stack A\n");
 	// print_stack(stack_a);
 
 	// printf("stack B\n");
 	// print_stack(stack_b);
-
-	return (0);
-}

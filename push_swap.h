@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 17:34:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 22:27:12 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_args
+{
+	int		*numbers; // parsing numbers
+	int		count; // size numbers
+}	t_args;
+
 // *** Helpers function ***
 char	**ft_split(char const *s, char c);
 void	display_error(void);
@@ -42,7 +48,7 @@ int		get_stack_size(t_stack *stack);
 void	indexing(t_stack *stack);
 int		chunk_size(int stack_size);
 void	move_to_b(t_stack **stack_a, t_stack **stack_b);
-
+t_args	process_input(int argc, char **argv);
 
 void	print_stack(t_stack *head); // to remove
 
