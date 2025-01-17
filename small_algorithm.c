@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 15:04:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:13:05 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,65 +69,4 @@ void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 	sort_three(stack_a);
 	while (*stack_b)
 		push_a(stack_a, stack_b);
-}
-
-int    chunk_size(int size)
-{
-    if (size <= 100)
-        return (size / 5);  // 20 numbers per chunk for 100
-    return (size / 11);     // ~45 numbers per chunk for 500
-}
-
-void    large_sort(t_stack **stack_a, t_stack **stack_b)
-{
-    int     i;
-    int     size;
-    int     range;
-
-    size = get_stack_size(*stack_a);
-    range = chunk_size(size);
-    i = 0;
-
-    indexing(*stack_a);
-    while (*stack_a)
-    {
-        if ((*stack_a)->index <= i)
-        {
-            push_b(stack_a, stack_b);
-            rotate_b(stack_b);
-            i++;
-        }
-        else if ((*stack_a)->index <= (range + i))
-        {
-            push_b(stack_a, stack_b);
-            i++;
-        }
-        else
-        {
-            if (get_stack_size(*stack_a) > 2)
-                rotate_a(stack_a);
-            else
-                reverse_ra(stack_a);
-        }
-    }
-
-	// pushing back
-    while (*stack_b)
-    {
-        int position = find_max_position(*stack_b);
-        int size_b = get_stack_size(*stack_b);
-
-        if (position <= size_b / 2)
-        {
-            while (position-- > 0)
-                rotate_b(stack_b);
-        }
-        else
-        {
-            position = size_b - position;
-            while (position-- > 0)
-                reverse_rb(stack_b);
-        }
-        push_a(stack_a, stack_b);
-    }
 }

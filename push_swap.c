@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 15:33:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:02:52 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,14 @@ int	main(int argc, char **argv)
 		sort_ffive(&stack_a, &stack_b);
 	else if (nbr_index > 5)
 		large_sort(&stack_a, &stack_b);
-	else
-		printf("Nothing\n");
+
+
 	// get_stack_size(stack_a);
 	// printf("stack A\n");
 	// print_stack(stack_a);
 
 	// printf("stack B\n");
 	// print_stack(stack_b);
+
 	return (0);
 }

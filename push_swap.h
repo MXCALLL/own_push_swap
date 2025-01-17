@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 15:13:44 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:34:27 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	rotate_to_top(t_stack **stack, int pos, int size);
 int		get_stack_size(t_stack *stack);
 void	indexing(t_stack *stack);
 int		chunk_size(int stack_size);
+void	move_to_b(t_stack **stack_a, t_stack **stack_b);
+
+
+void	print_stack(t_stack *head); // to remove
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);
