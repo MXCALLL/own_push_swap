@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:11:34 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 00:26:29 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:47:22 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,6 @@ int	chunk_size(int size)
 	if (size <= 100)
 		return (size / 5);
 	return (size / 11);
-}
-
-void	indexing(t_stack *stack)
-{
-	t_stack	*current;
-	t_stack	*min_node;
-	int		i;
-	int		size;
-
-	size = get_stack_size(stack);
-	i = 0;
-	while (i < size)
-	{
-		current = stack;
-		min_node = NULL;
-		while (current)
-		{
-			if (current->index == -1)
-				if (!min_node || current->content < min_node->content)
-					min_node = current;
-			current = current->next;
-		}
-		if (min_node)
-			min_node->index = i++;
-	}
 }
 
 int	detect_diff(t_stack **stack_a)

@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/18 16:01:46 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:47:04 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,32 @@ void	rotate_to_top(t_stack **stack, int pos, int size)
 		while (pos-- > 0)
 			reverse_ra(stack);
 	}
+}
+
+int	find_min_position(t_stack *stack)
+{
+	int		min_val;
+	int		pos;
+	int		i;
+	t_stack	*temp;
+
+	if (!stack)
+		return (-1);
+	temp = stack;
+	min_val = INT_MAX;
+	pos = 0;
+	i = 0;
+	while (temp)
+	{
+		if (temp->content < min_val)
+		{
+			min_val = temp->content;
+			pos = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	return (pos);
 }
 
 void	sort_three(t_stack **stack_a)

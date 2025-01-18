@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/18 16:06:12 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:47:53 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,31 @@ int	is_sorted(t_stack **head)
 		current = current->next;
 	}
 	return (1);
+}
+
+void	indexing(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*min_node;
+	int		i;
+	int		size;
+
+	size = get_stack_size(stack);
+	i = 0;
+	while (i < size)
+	{
+		current = stack;
+		min_node = NULL;
+		while (current)
+		{
+			if (current->index == -1)
+				if (!min_node || current->content < min_node->content)
+					min_node = current;
+			current = current->next;
+		}
+		if (min_node)
+			min_node->index = i++;
+	}
 }
 
 t_stack	*insert_to_stack(t_stack **head, int **number, int size)
@@ -72,30 +97,4 @@ void	free_split(char **split)
 		i++;
 	}
 	free(split);
-}
-
-int	find_min_position(t_stack *stack)
-{
-	int		min_val;
-	int		pos;
-	int		i;
-	t_stack	*temp;
-
-	if (!stack)
-		return (-1);
-	temp = stack;
-	min_val = INT_MAX;
-	pos = 0;
-	i = 0;
-	while (temp)
-	{
-		if (temp->content < min_val)
-		{
-			min_val = temp->content;
-			pos = i;
-		}
-		temp = temp->next;
-		i++;
-	}
-	return (pos);
 }
