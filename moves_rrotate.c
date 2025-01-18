@@ -6,23 +6,22 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:47:58 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/15 11:26:49 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:04:34 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void reverse_rotate(t_stack **stack)
+static void	reverse_rotate(t_stack **stack)
 {
-	t_stack		*last;
-	t_stack		*slast;
+	t_stack	*last;
+	t_stack	*slast;
 
-	if(!*stack || (*stack)->next == NULL)
+	if (!*stack || (*stack)->next == NULL)
 		return ;
-
 	last = *stack;
 	slast = NULL;
-	while(last->next)
+	while (last->next)
 	{
 		slast = last;
 		last = last->next;
@@ -35,18 +34,18 @@ static void reverse_rotate(t_stack **stack)
 void	reverse_ra(t_stack **stack_a)
 {
 	reverse_rotate(stack_a);
-	write(1,"rra\n",4);
+	write(1, "rra\n", 4);
 }
 
 void	reverse_rb(t_stack **stack_b)
 {
 	reverse_rotate(stack_b);
-	write(1,"rrb\n",4);
+	write(1, "rrb\n", 4);
 }
 
 void	reverse_rboth(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	write(1,"rrr\n",4);
+	write(1, "rrr\n", 4);
 }

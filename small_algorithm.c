@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_algorithm.c                                :+:      :+:    :+:   */
+/*   small_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:02:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 16:13:05 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:01:46 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	rotate_to_top(t_stack **stack, int pos, int size)
 
 void	sort_three(t_stack **stack_a)
 {
-	int     first;
-	int     second;
-	int     last;
+	int	first;
+	int	second;
+	int	last;
 
 	first = (*stack_a)->content;
 	second = (*stack_a)->next->content;
@@ -56,8 +56,8 @@ void	sort_three(t_stack **stack_a)
 
 void	sort_ffive(t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
-	int position;
+	int	size;
+	int	position;
 
 	while (get_stack_size(*stack_a) > 3)
 	{
