@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:11:34 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/18 20:32:30 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:26:29 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,27 @@ void	indexing(t_stack *stack)
 	}
 }
 
-// static int is_two(int **nbr, int index)
-// {
-// 	int i = 0;
-// 	int flag = 0;
-// 	while(i < index)
-// 	{
-// 		if (nbr[i] > nbr[i+1] && (nbr[i] - 2) == nbr[i+1])
-// 			flag = 1;
-// 		i++;
-// 	}
-// 	if(flag == 1)
-// 		return (1);
-// 	return (0);
-// }
+int	detect_diff(t_stack **stack_a)
+{
+	int		diff;
+	int		flag;
+	t_stack	*tmp;
+
+	tmp = *stack_a;
+	while (tmp && tmp->next)
+	{
+		diff = tmp->index - tmp->next->index;
+		if (diff == 2 || diff == 3 || diff == 4)
+			flag = 1;
+		tmp = tmp->next;
+	}
+	if (flag == 1)
+		return (1);
+	return (0);
+}
 
 void	move_to_b(t_stack **stack_a, t_stack **stack_b)
 {
-	// t_args args;
 	int	i;
 	int	range;
 
@@ -80,6 +83,8 @@ void	move_to_b(t_stack **stack_a, t_stack **stack_b)
 			push_b(stack_a, stack_b);
 			i++;
 		}
+		else if (detect_diff(stack_a))
+			reverse_ra(stack_a);
 		else
 			rotate_a(stack_a);
 	}
