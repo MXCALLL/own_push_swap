@@ -6,20 +6,17 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 00:17:37 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:39:12 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-
-# include <stdio.h> // to remove
 
 typedef struct s_stack
 {
