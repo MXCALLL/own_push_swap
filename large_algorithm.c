@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:11:34 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/18 15:50:31 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:32:30 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,24 @@ void	indexing(t_stack *stack)
 	}
 }
 
+// static int is_two(int **nbr, int index)
+// {
+// 	int i = 0;
+// 	int flag = 0;
+// 	while(i < index)
+// 	{
+// 		if (nbr[i] > nbr[i+1] && (nbr[i] - 2) == nbr[i+1])
+// 			flag = 1;
+// 		i++;
+// 	}
+// 	if(flag == 1)
+// 		return (1);
+// 	return (0);
+// }
+
 void	move_to_b(t_stack **stack_a, t_stack **stack_b)
 {
+	// t_args args;
 	int	i;
 	int	range;
 
