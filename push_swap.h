@@ -6,14 +6,15 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/17 22:27:12 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:17:37 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/ft_printf.h"
+
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
@@ -49,8 +50,7 @@ void	indexing(t_stack *stack);
 int		chunk_size(int stack_size);
 void	move_to_b(t_stack **stack_a, t_stack **stack_b);
 t_args	process_input(int argc, char **argv);
-
-void	print_stack(t_stack *head); // to remove
+int		detect_diff(t_stack **stack_a);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);
