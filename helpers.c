@@ -6,17 +6,11 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 00:47:53 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 14:24:47 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	display_error(void)
-{
-	write(1, "Error\n", 7);
-	exit(1);
-}
 
 int	is_sorted(t_stack **head)
 {
@@ -82,19 +76,4 @@ t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 		i++;
 	}
 	return (*head);
-}
-
-void	free_split(char **split)
-{
-	int	i;
-
-	if (!split)
-		return ;
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
 }

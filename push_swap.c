@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/18 16:00:42 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 15:45:33 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ static int	countnbr(int argc, char **argv)
 	{
 		argv_split = ft_split(argv[i], ' ');
 		if (argv_split == NULL || argv_split[0] == NULL)
+		{
+			free_split(argv_split);
 			display_error();
+		}
 		j = 0;
 		while (argv_split[j])
 			j++;
@@ -89,7 +92,7 @@ t_args	process_input(int argc, char **argv)
 			result.numbers[result.count++] = ft_atoi(argv_split[j++]);
 		if (check_duplicates(result.numbers, result.count))
 		{
-			free(result.numbers);
+			free_split_number(argv_split, result.numbers);
 			display_error();
 		}
 		free_split(argv_split);
@@ -111,7 +114,7 @@ int	main(int argc, char **argv)
 	args = process_input(argc, argv);
 	stack_a = insert_to_stack(&stack_a, &args.numbers, args.count);
 	if (is_sorted(&stack_a))
-		return (1);
+		return (free(args.numbers), free_stack(&stack_a), 1);
 	if (args.count == 2)
 		swap_a(&stack_a);
 	else if (args.count == 3)
@@ -120,11 +123,8 @@ int	main(int argc, char **argv)
 		sort_ffive(&stack_a, &stack_b);
 	else if (args.count > 5)
 		large_sort(&stack_a, &stack_b);
+	free(args.numbers);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
-
-	// printf("stack A\n");
-	// print_stack(stack_a);
-
-	// printf("stack B\n");
-	// print_stack(stack_b);
