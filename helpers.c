@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 14:24:47 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:32:46 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 	{
 		new_element = malloc(sizeof(t_stack));
 		if (!new_element)
-			display_error();
+			display_error(NULL, NULL);
 		new_element->content = (*number)[i];
 		new_element->index = -1;
 		new_element->next = NULL;
