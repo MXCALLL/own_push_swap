@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 00:42:25 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 11:12:09 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	indexing(t_stack *stack);
 int		chunk_size(int stack_size);
 void	move_to_b(t_stack **stack_a, t_stack **stack_b);
 t_args	process_input(int argc, char **argv);
-int		detect_diff(t_stack **stack_a);
+int		detect_diff(t_stack **stack_a, int size);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);
