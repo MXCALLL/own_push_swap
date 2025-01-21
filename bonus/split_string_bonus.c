@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_string.c                                     :+:      :+:    :+:   */
+/*   split_string_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:51:43 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/20 14:55:44 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:11:11 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 static size_t	count_words(char const *s, char c)
 {

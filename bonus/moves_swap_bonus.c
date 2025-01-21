@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_push.c                                       :+:      :+:    :+:   */
+/*   moves_swap_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 14:53:41 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/20 19:07:43 by muidbell         ###   ########.fr       */
+/*   Created: 2025/01/06 12:32:09 by muidbell          #+#    #+#             */
+/*   Updated: 2025/01/21 21:11:06 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+static void	swap(t_stack **stack)
 {
-	t_stack	*temp_b;
+	t_stack	*temp;
 
-	if (*stack_b == NULL)
+	if (!*stack || (*stack)->next == NULL)
 		return ;
-	temp_b = *stack_b;
-	*stack_b = (*stack_b)->next;
-	temp_b->next = *stack_a;
-	*stack_a = temp_b;
+	temp = *stack;
+	*stack = temp->next;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
 }
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
+void	swap_a(t_stack **stack_a)
 {
-	t_stack	*temp_a;
+	swap(stack_a);
+}
 
-	if (*stack_a == NULL)
-		return ;
-	temp_a = *stack_a;
-	*stack_a = (*stack_a)->next;
-	temp_a->next = *stack_b;
-	*stack_b = temp_a;
+void	swap_b(t_stack **stack_b)
+{
+	swap(stack_b);
+}
+
+void	swap_both(t_stack **stack_a, t_stack **stack_b)
+{
+	swap(stack_a);
+	swap(stack_b);
 }

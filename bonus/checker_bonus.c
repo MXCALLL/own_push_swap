@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 19:29:57 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:10:06 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	char	*operations;
 
+	if(argc < 2)
+		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	args = process_input(argc, argv);
