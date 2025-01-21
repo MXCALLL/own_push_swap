@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:48:11 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 17:53:21 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:33:32 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 			|| (sign == -1 && result * sign < INT_MIN))
 			display_error(NULL, NULL);
 	}
-	if (*str != '\0')
+	if (*str != '\0' && *str != ' ')
 		display_error(NULL, NULL);
 	return ((int)(result * sign));
 }

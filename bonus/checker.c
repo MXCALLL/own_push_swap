@@ -6,29 +6,11 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 18:31:34 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:29:57 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include <stdio.h>
-#include <string.h>
-
-// static int	valid_operation(char *operations)
-// {
-// 	char	*valid_ops[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
-// 			"rra", "rrb", "rrr"};
-// 	int		i;
-
-// 	i = 0;
-// 	while (i < 11)
-// 	{
-// 		if (ft_strncmp(operations, valid_ops[i],2) == 0)
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
 
 int	main(int argc, char **argv)
 {
@@ -45,40 +27,41 @@ int	main(int argc, char **argv)
 
 	while (operations)
 	{
-		if (ft_strncmp(operations, "sa",2) == 0)
+		if (ft_strncmp(operations, "sa\n",3) == 0)
 			swap_a(&stack_a);
-		else if (ft_strncmp(operations, "sb\n",2) == 0)
+		else if (ft_strncmp(operations, "sb\n",3) == 0)
 			swap_b(&stack_b);
-		else if (ft_strncmp(operations, "ss\n",2) == 0)
+		else if (ft_strncmp(operations, "ss\n",3) == 0)
 			swap_both(&stack_a, &stack_b);
-		else if (ft_strncmp(operations, "pa\n",2) == 0)
+		else if (ft_strncmp(operations, "pa\n",3) == 0)
 			push_a(&stack_a, &stack_b);
-		else if (ft_strncmp(operations, "pb\n",2) == 0)
+		else if (ft_strncmp(operations, "pb\n",3) == 0)
 			push_b(&stack_a, &stack_b);
-		else if (ft_strncmp(operations, "ra\n",2) == 0)
+		else if (ft_strncmp(operations, "ra\n",3) == 0)
 			rotate_a(&stack_a);
-		else if (ft_strncmp(operations, "rb\n",2) == 0)
+		else if (ft_strncmp(operations, "rb\n",3) == 0)
 			rotate_b(&stack_b);
-		else if (ft_strncmp(operations, "rr\n",2) == 0)
+		else if (ft_strncmp(operations, "rr\n",3) == 0)
 			rotate_both(&stack_a, &stack_b);
-		else if (ft_strncmp(operations, "rra\n",3) == 0)
+		else if (ft_strncmp(operations, "rra\n",4) == 0)
 			reverse_ra(&stack_a);
-		else if (ft_strncmp(operations, "rrb\n",3) == 0)
+		else if (ft_strncmp(operations, "rrb\n",4) == 0)
 			reverse_rb(&stack_b);
-		else if (ft_strncmp(operations, "rrr\n",3) == 0)
+		else if (ft_strncmp(operations, "rrr\n",4) == 0)
 			reverse_rboth(&stack_a, &stack_b);
 		else
 		{
-			write(2,"Error\n",6);
-			exit(1);
+			free(operations);
+			display_error(NULL,args.numbers);
 		}
+		free(operations);
 		operations = get_next_line(0);
 	}
-	if (is_sorted(&stack_a) && stack_b == NULL)
+	if (is_sorted(&stack_a) && !stack_b && stack_a)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-
+	free(operations);
 	free(args.numbers);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
