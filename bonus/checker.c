@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 17:36:25 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:31:34 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int	main(int argc, char **argv)
 		else if (ft_strncmp(operations, "rrr\n",3) == 0)
 			reverse_rboth(&stack_a, &stack_b);
 		else
+		{
 			write(2,"Error\n",6);
+			exit(1);
+		}
 		operations = get_next_line(0);
 	}
 	if (is_sorted(&stack_a) && stack_b == NULL)
