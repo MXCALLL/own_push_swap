@@ -6,24 +6,34 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 21:32:46 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:44:43 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack **head)
+static int	countnbr(int argc, char **argv)
 {
-	t_stack	*current;
+	int		i;
+	int		j;
+	int		countnbr;
+	char	**argv_split;
 
-	current = *head;
-	while (current->next != NULL)
+	i = 1;
+	countnbr = 0;
+	while (i < argc)
 	{
-		if (current->content > current->next->content)
-			return (0);
-		current = current->next;
+		argv_split = ft_split(argv[i], ' ');
+		if (argv_split == NULL || argv_split[0] == NULL)
+			display_error(argv_split, NULL);
+		j = 0;
+		while (argv_split[j])
+			j++;
+		countnbr += j;
+		free_split(argv_split);
+		i++;
 	}
-	return (1);
+	return (countnbr);
 }
 
 void	indexing(t_stack *stack)
@@ -76,4 +86,42 @@ t_stack	*insert_to_stack(t_stack **head, int **number, int size)
 		i++;
 	}
 	return (*head);
+}
+
+static void	ft_check(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+		ft_atoi(argv[i++]);
+}
+
+t_args	process_input(int argc, char **argv)
+{
+	t_args	result;
+	char	**argv_split;
+	int		i;
+	int		j;
+
+	ft_check(argc, argv);
+	i = 1;
+	result.count = 0;
+	result.numbers = malloc(sizeof(int) * countnbr(argc, argv));
+	if (!result.numbers)
+		display_error(NULL, NULL);
+	while (i < argc)
+	{
+		argv_split = ft_split(argv[i], ' ');
+		if (argv_split == NULL || argv_split[0] == NULL)
+			display_error(argv_split, result.numbers);
+		j = 0;
+		while (argv_split[j])
+			result.numbers[result.count++] = ft_atoi(argv_split[j++]);
+		if (check_duplicates(result.numbers, result.count))
+			display_error(argv_split, result.numbers);
+		free_split(argv_split);
+		i++;
+	}
+	return (result);
 }

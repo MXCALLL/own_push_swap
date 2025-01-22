@@ -6,25 +6,11 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 21:10:48 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:34:16 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
-
-int	is_sorted(t_stack **head)
-{
-	t_stack	*current;
-
-	current = *head;
-	while (current->next != NULL)
-	{
-		if (current->content > current->next->content)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
 
 void	indexing(t_stack *stack)
 {
@@ -102,6 +88,15 @@ static int	countnbr(int argc, char **argv)
 	return (countnbr);
 }
 
+static void	ft_check(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+		ft_atoi(argv[i++]);
+}
+
 t_args	process_input(int argc, char **argv)
 {
 	t_args	result;
@@ -109,6 +104,7 @@ t_args	process_input(int argc, char **argv)
 	int		i;
 	int		j;
 
+	ft_check(argc, argv);
 	i = 1;
 	result.count = 0;
 	result.numbers = malloc(sizeof(int) * countnbr(argc, argv));

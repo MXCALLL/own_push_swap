@@ -6,13 +6,13 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 23:52:41 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:09:22 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	perform_operation(char *op, t_stack **stack_a, t_stack **stack_b, t_args *args)
+int	perform_operation(char *op, t_stack **stack_a, t_stack **stack_b)
 {
 	if (!ft_strncmp(op, "sa\n", 3))
 		swap_a(stack_a);
@@ -37,17 +37,38 @@ void	perform_operation(char *op, t_stack **stack_a, t_stack **stack_b, t_args *a
 	else if (!ft_strncmp(op, "rrr\n", 4))
 		reverse_rboth(stack_a, stack_b);
 	else
-		display_error(NULL, args->numbers);
+		return (0);
+	return (1);
 }
 
-void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args *args)
+int	is_sorted(t_stack **head)
+{
+	t_stack	*current;
+
+	current = *head;
+	while (current->next != NULL)
+	{
+		if (current->content > current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
+
+void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args args)
 {
 	char	*operations;
-
 	operations = get_next_line(0);
 	while (operations)
 	{
-		perform_operation(operations, stack_a, stack_b, args);
+		if (!perform_operation(operations, stack_a, stack_b))
+        {
+            free(operations);
+			free_stack(stack_a);
+			free_stack(stack_b);
+			free(args.numbers);
+            display_error(NULL, NULL);
+        }
 		free(operations);
 		operations = get_next_line(0);
 	}
@@ -65,7 +86,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	args = process_input(argc, argv);
 	stack_a = insert_to_stack(&stack_a, &args.numbers, args.count);
-	do_operations(&stack_a, &stack_b, &args);
+	do_operations(&stack_a, &stack_b, args);
 	if (is_sorted(&stack_a) && !stack_b && stack_a)
 		write(1, "OK\n", 3);
 	else

@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 21:38:22 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:25:55 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,56 +45,18 @@ int	check_duplicates(int *numbers, int size)
 	return (0);
 }
 
-static int	countnbr(int argc, char **argv)
+int	is_sorted(t_stack **head)
 {
-	int		i;
-	int		j;
-	int		countnbr;
-	char	**argv_split;
+	t_stack	*current;
 
-	i = 1;
-	countnbr = 0;
-	while (i < argc)
+	current = *head;
+	while (current->next != NULL)
 	{
-		argv_split = ft_split(argv[i], ' ');
-		if (argv_split == NULL || argv_split[0] == NULL)
-			display_error(argv_split, NULL);
-		j = 0;
-		while (argv_split[j])
-			j++;
-		countnbr += j;
-		free_split(argv_split);
-		i++;
+		if (current->content > current->next->content)
+			return (0);
+		current = current->next;
 	}
-	return (countnbr);
-}
-
-t_args	process_input(int argc, char **argv)
-{
-	t_args	result;
-	char	**argv_split;
-	int		i;
-	int		j;
-
-	i = 1;
-	result.count = 0;
-	result.numbers = malloc(sizeof(int) * countnbr(argc, argv));
-	if (!result.numbers)
-		display_error(NULL, NULL);
-	while (i < argc)
-	{
-		argv_split = ft_split(argv[i], ' ');
-		if (argv_split == NULL || argv_split[0] == NULL)
-			display_error(argv_split, result.numbers);
-		j = 0;
-		while (argv_split[j])
-			result.numbers[result.count++] = ft_atoi(argv_split[j++]);
-		if (check_duplicates(result.numbers, result.count))
-			display_error(argv_split, result.numbers);
-		free_split(argv_split);
-		i++;
-	}
-	return (result);
+	return (1);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 14:23:26 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 21:10:27 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:55:56 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ void	free_split(char **split)
 	if (!split)
 		return ;
 	i = 0;
-	while (split[i])
+	while (split[i] != NULL)
 	{
 		free(split[i]);
 		i++;
 	}
 	free(split);
 }
-//////////////////////////////////////////////////////////////
 
 int	check_duplicates(int *numbers, int size)
 {

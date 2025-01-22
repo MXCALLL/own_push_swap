@@ -6,18 +6,18 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:03:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/21 22:12:55 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:09:14 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
-# include "../push_swap.h"
+# include "../mandatory/push_swap.h"
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1337
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1337
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
@@ -27,5 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args args);
+int		perform_operation(char *op, t_stack **stack_a, t_stack **stack_b);
 
 #endif
