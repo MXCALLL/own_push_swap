@@ -6,20 +6,53 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 11:52:26 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:36:49 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	is_valid_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	ft_check(char **argv)
 {
 	int		i;
+	char	**split;
+	int		j;
 
 	i = 1;
 	while (argv[i])
 	{
-		ft_atoi(argv[i]);
+		split = ft_split(argv[i], ' ');
+		if (!split || !split[0])
+			display_error(split, NULL);
+		j = 0;
+		while (split[j])
+		{
+			if (!is_valid_number(split[j]))
+			{
+				free_split(split);
+				display_error(NULL, NULL);
+			}
+			j++;
+		}
+		free_split(split);
 		i++;
 	}
 }

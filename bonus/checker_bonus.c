@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/22 13:37:21 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:30:25 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ int	perform_operation(char *op, t_stack **stack_a, t_stack **stack_b)
 	else
 		return (0);
 	return (1);
+}
+
+t_stack	*insert_to_stack(t_stack **head, int **number, int size)
+{
+	int		i;
+	t_stack	*new_element;
+	t_stack	*current;
+
+	*head = NULL;
+	current = NULL;
+	i = 0;
+	while (i < size)
+	{
+		new_element = malloc(sizeof(t_stack));
+		if (!new_element)
+			display_error(NULL, NULL);
+		new_element->content = (*number)[i];
+		new_element->index = -1;
+		new_element->next = NULL;
+		if (*head == NULL)
+			*head = new_element;
+		else
+			current->next = new_element;
+		current = new_element;
+		i++;
+	}
+	return (*head);
 }
 
 int	is_sorted(t_stack **head)

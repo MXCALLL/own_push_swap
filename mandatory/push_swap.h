@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 11:42:32 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:21:20 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_args	process_input(int argc, char **argv);
 int		detect_diff(t_stack **stack_a, int size);
 void	free_stack(t_stack **stack);
 void	ft_check(char **argv);
+int		ft_isdigit(int c);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);

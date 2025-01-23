@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:03:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 11:45:16 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:26:54 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args args);
 int		perform_operation(char *op, t_stack **stack_a, t_stack **stack_b);
 void	ft_check(char **argv);
+int		ft_isdigit(int c);
 
 #endif

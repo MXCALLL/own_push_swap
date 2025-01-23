@@ -6,11 +6,18 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 14:23:26 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 21:49:39 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:36:32 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 void	display_error(char **split, int *numbers)
 {
