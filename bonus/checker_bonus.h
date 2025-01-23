@@ -6,14 +6,14 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:03:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/22 13:09:14 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:30:36 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
-# include "../mandatory/push_swap.h"
+# include "../src/push_swap.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1337
