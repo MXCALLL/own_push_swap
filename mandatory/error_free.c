@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 14:23:26 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 10:37:10 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:49:39 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	display_error(char **split, int *numbers)
 {
-	write(2, "Error\n", 6);
+	write(2, "Error\n", 7);
 	if (split)
 		free_split(split);
 	if (numbers)

@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/22 11:34:16 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:45:05 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ static int	countnbr(int argc, char **argv)
 	return (countnbr);
 }
 
-static void	ft_check(int argc, char **argv)
+void	ft_check(char **argv)
 {
 	int	i;
 
 	i = 1;
-	while (i < argc)
+	while (argv[i])
 		ft_atoi(argv[i++]);
 }
 
@@ -104,7 +104,7 @@ t_args	process_input(int argc, char **argv)
 	int		i;
 	int		j;
 
-	ft_check(argc, argv);
+	ft_check(argv);
 	i = 1;
 	result.count = 0;
 	result.numbers = malloc(sizeof(int) * countnbr(argc, argv));

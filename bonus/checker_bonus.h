@@ -6,14 +6,14 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:03:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 10:30:36 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:45:16 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
-# include "../src/push_swap.h"
+# include "../mandatory/push_swap.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1337
@@ -29,5 +29,6 @@ char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args args);
 int		perform_operation(char *op, t_stack **stack_a, t_stack **stack_b);
+void	ft_check(char **argv);
 
 #endif

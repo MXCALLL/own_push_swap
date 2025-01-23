@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:28:53 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/20 11:05:02 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:42:32 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	move_to_b(t_stack **stack_a, t_stack **stack_b);
 t_args	process_input(int argc, char **argv);
 int		detect_diff(t_stack **stack_a, int size);
 void	free_stack(t_stack **stack);
+void	ft_check(char **argv);
 
 // *** Operations ***
 void	push_a(t_stack **stack_a, t_stack **stack_b);

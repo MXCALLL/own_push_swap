@@ -1,5 +1,5 @@
-SRCS = src/push_swap.c src/split_string.c src/converter.c src/helpers.c src/moves_swap.c src/error_free.c \
-       src/moves_rrotate.c src/moves_rotate.c src/moves_push.c src/small_algorithm.c src/large_algorithm.c
+SRCS = mandatory/push_swap.c mandatory/split_string.c mandatory/converter.c mandatory/helpers.c mandatory/moves_swap.c mandatory/error_free.c \
+       mandatory/moves_rrotate.c mandatory/moves_rotate.c mandatory/moves_push.c mandatory/small_algorithm.c mandatory/large_algorithm.c
 
 BONUS_SRCS = bonus/checker_bonus.c bonus/converter_bonus.c bonus/error_free_bonus.c \
              bonus/ft_strncmp_bonus.c bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c \
