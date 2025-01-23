@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 12:29:03 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/23 11:42:28 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:50:55 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,6 @@ static int	countnbr(int argc, char **argv)
 		i++;
 	}
 	return (countnbr);
-}
-void ft_check(char **argv)
-{
-	int		i;
-
-	i = 1;
-	while(argv[i])
-	{
-		ft_atoi(argv[i]);
-		i++;
-	}
 }
 
 t_args	process_input(int argc, char **argv)

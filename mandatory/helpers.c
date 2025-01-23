@@ -6,11 +6,23 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:14:44 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/19 21:32:46 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:52:26 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_check(char **argv)
+{
+	int		i;
+
+	i = 1;
+	while (argv[i])
+	{
+		ft_atoi(argv[i]);
+		i++;
+	}
+}
 
 int	is_sorted(t_stack **head)
 {
