@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
-HEADER = push_swap.h
+HEADER = mandatory/push_swap.h
 BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 BONUS_NAME = checker
 BONUS_HEADER = bonus/checker_bonus.h
@@ -26,7 +26,10 @@ bonus: ${BONUS_NAME}
 ${BONUS_NAME}: ${BONUS_OBJS}
 	${CC} ${BONUS_OBJS} -o ${BONUS_NAME}
 
-%.o: %.c ${HEADER} ${BONUS_HEADER}
+mandatory/%.o: mandatory/%.c ${HEADER}
+	${CC} ${CFLAGS} -c $< -o $@
+
+bonus/%.o: bonus/%.c ${BONUS_HEADER}
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
