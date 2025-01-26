@@ -19,23 +19,29 @@ BONUS_HEADER = bonus/checker_bonus.h
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${OBJS} -o ${NAME}
+	@echo "Linking objects into ${NAME}"
+	@${CC} ${OBJS} -o ${NAME}
 
 bonus: ${BONUS_NAME}
 
 ${BONUS_NAME}: ${BONUS_OBJS}
-	${CC} ${BONUS_OBJS} -o ${BONUS_NAME}
+	@echo "Linking objects into ${BONUS_NAME}"
+	@${CC} ${BONUS_OBJS} -o ${BONUS_NAME}
 
 mandatory/%.o: mandatory/%.c ${HEADER}
-	${CC} ${CFLAGS} -c $< -o $@
+	@echo "Compiling source: $<"
+	@${CC} ${CFLAGS} -c $< -o $@
 
 bonus/%.o: bonus/%.c ${BONUS_HEADER}
-	${CC} ${CFLAGS} -c $< -o $@
+	@echo "Compiling source: $<"
+	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	${RM} ${OBJS} ${BONUS_OBJS}
+	@echo "Removing all object file"
+	@${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean: clean
-	${RM} ${NAME} ${BONUS_NAME}
+	@echo "Removing ${NAME} & ${BONUS_NAME}"
+	@${RM} ${NAME} ${BONUS_NAME}
 
 re: fclean all
