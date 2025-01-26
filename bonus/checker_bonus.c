@@ -6,7 +6,7 @@
 /*   By: muidbell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:58:25 by muidbell          #+#    #+#             */
-/*   Updated: 2025/01/24 17:19:13 by muidbell         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:37:26 by muidbell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,25 @@ int	is_sorted(t_stack **head)
 
 void	do_operations(t_stack **stack_a, t_stack **stack_b, t_args args)
 {
-	char	*operations;
+	t_op_list	*list;
+	char		*op;
 
-	operations = get_next_line(0);
-	while (operations)
+	list = NULL;
+	op = get_next_line(0);
+	while (op)
 	{
-		if (!perform_operation(operations, stack_a, stack_b))
+		if (!is_valid_op(op))
 		{
-			free(operations);
+			free(op);
 			free_stack(stack_a);
 			free_stack(stack_b);
 			free(args.numbers);
 			display_error(NULL, NULL);
 		}
-		free(operations);
-		operations = get_next_line(0);
+		list = add_to_list(list, op);
+		op = get_next_line(0);
 	}
+	exec_op(stack_a, stack_b, list);
 }
 
 int	main(int argc, char **argv)
